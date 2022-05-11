@@ -323,18 +323,11 @@ def tree_node(name: str, *, label: str = "__DearPyGuiDefault", show: bool = True
         None
     """
     try:
-        if label == "__DearPyGuiDefault":
-            yield internal_dpg.add_tree_node(name, show=show, tip=tip, parent=parent,
-                                             before=before, default_open=default_open, 
-                                             open_on_double_click=open_on_double_click, 
-                                             open_on_arrow=open_on_arrow,
-                                             leaf=leaf, bullet=bullet)
-        else:
-            yield internal_dpg.add_tree_node(name, show=show, tip=tip, parent=parent,
-                                             before=before, default_open=default_open, 
-                                             open_on_double_click=open_on_double_click, 
-                                             open_on_arrow=open_on_arrow,
-                                             leaf=leaf, bullet=bullet)
+        yield internal_dpg.add_tree_node(name, show=show, tip=tip, parent=parent,
+                                         before=before, default_open=default_open, 
+                                         open_on_double_click=open_on_double_click, 
+                                         open_on_arrow=open_on_arrow,
+                                         leaf=leaf, bullet=bullet)
     finally:
         internal_dpg.end()
 

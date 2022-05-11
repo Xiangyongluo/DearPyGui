@@ -134,10 +134,7 @@ def demo_accelerator_callback(sender, data):
 
     def are_all_true(shortcut):
         keys = shortcut.split("+")
-        for item in keys:
-            if not is_key_down(mapping[item.upper()]):
-                return False
-        return True
+        return all(is_key_down(mapping[item.upper()]) for item in keys)
 
     items = get_all_items()
     for item in items:
@@ -241,9 +238,7 @@ def show_demo():
                 def log_callback(sender, data):
                     log_debug(f"{sender} ran a callback")
                 def toggle_config(sender, data):
-                    config_dict = {}
-                    for kwarg in data['kwargs']:
-                        config_dict[kwarg] = get_value(sender)
+                    config_dict = {kwarg: get_value(sender) for kwarg in data['kwargs']}
                     for item in data['items']:
                         configure_item(item, **config_dict)
 

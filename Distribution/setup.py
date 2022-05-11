@@ -13,7 +13,7 @@ with open("distinfo.txt", encoding='utf-8') as file:
 
 class BinaryDistribution(Distribution):
     """Distribution which always forces a binary package with platform name"""
-    def has_ext_modules(foo):
+    def has_ext_modules(self):
         return True
 
 setup(

@@ -65,26 +65,26 @@ with window("Asyncronous##dialog", show=True):
     def LongCallback2(sender, data):
         log_debug("Starting Long Process")
         log_debug("Starting Long Process", logger="LoggerWidget##demo")
-        for i in range(0, 10000):
+        for i in range(10000):
             a = i *100
             #set_value("Async Label", str(i))
         time.sleep(5)
         log_info("Done with long process")
 
     def ReturnFromLongProcess(sender, data):
-        log_info("Completed process number: " + str(data))
+        log_info(f"Completed process number: {str(data)}")
         add_data('threadNumber', get_data('threadNumber')-1)
 
     def LongAsyncronousCallback(sender, data):
         current_number = get_data('threadNumber')
         run_async_function(LongCallback, current_number, return_handler=ReturnFromLongProcess)
-        log_info("Start process number: " + str(current_number))
+        log_info(f"Start process number: {str(current_number)}")
         add_data('threadNumber', current_number+1)
 
     def LongAsyncronousCallback2(sender, data):
         current_number = get_data('threadNumber')
         run_async_function(LongCallback2, current_number, return_handler=ReturnFromLongProcess)
-        log_info("Start process number: " + str(current_number))
+        log_info(f"Start process number: {str(current_number)}")
         add_data('threadNumber', current_number+1)
 
 
